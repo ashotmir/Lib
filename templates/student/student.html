@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% set page_title = "Students" %}
+
+{% block content %}
+    <div class="list-group">
+        {% for student in students %}
+           <a href="/student/{{ student.id }}"
+           class="list-group-item list-group-item-action">
+                {{student.id}}-
+                {{ student.first_name }}
+                {{ student.second_name }}
+           </a>
+        {% endfor %}
+    </div>
+    {% for i in range(1, total_pages+1) %}
+        <a href="?page={{i}}">{{i}} </a>
+    {% endfor %}
+
+
+{% endblock %}

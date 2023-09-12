@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h3>Student details</h3>
+    <h4>Name: {{ student.first_name }} {{ student.second_name }}</h4>
+    <h4>ID: {{ student.id }}</h4>
+    <h4>Borrowed books:</h4>
+    <hr>
+    {% for book in books %}
+        <h4>{{ book.title }}:</h4>
+    {% endfor %}
+    <hr>
+
+{% endblock %}

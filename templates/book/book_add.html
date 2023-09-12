@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% from "macros.html" import error_display with context %}
+{% set page_title = "Add-Book" %}
+{% block content %}
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h1>Add Book</h1>
+            <form method="POST">
+                 {{ form.csrf_token }}
+                <div class="form-group">
+                    <label for="title" class="form-label">Title </label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Title *"
+                               {% if form.title.data %}
+                                value="{{ form.title.data }}"
+                               {% endif %}
+                               id="title"
+                               name="title"
+                               required
+                    >
+                </div>
+                {{ error_display(form.title.errors) }}
+                <div class="form-group">
+                    <label for="year_first_published" class="form-label">Year First Published</label>
+                    <input type="number"
+                           min="1000"
+                           max="2023"
+                           step="1"
+                           class="form-control"
+                           placeholder="Year First Published *"
+                           {% if form.year_first_published.data %}
+                            value="{{ form.year_first_published.data }}"
+                           {% endif %}
+                           id="year_first_published"
+                           name="year_first_published"
+                           required
+                    >
+                </div>
+                {{ error_display(form.year_first_published.errors) }}
+                <h3>Author:</h3>
+                <div class="form-group">
+                    <label for="first_name" class="form-label">First Name</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="First Name *"
+                           {% if form.first_name.data %}
+                            value="{{ form.first_name.data }}"
+                           {% endif %}
+                           id="first_name"
+                           name="first_name"
+                           required
+                    >
+                </div>
+                {{ error_display(form.first_name.errors) }}
+                <div class="form-group">
+                    <label for="second_name" class="form-label">Second Name</label>
+                    <input type="text"
+                           class="form-control"
+                           placeholder="Second Name *"
+                           {% if form.first_name.data %}
+                            value="{{ form.second_name.data }}"
+                           {% endif %}
+                           id="second_name"
+                           name="second_name"
+                           required
+                    >
+                </div>
+                {{ error_display(form.second_name.errors) }}
+                <h3>Copies:</h3>
+                <div class="form-group">
+                    <label for="quantity" class="form-label">Quantity</label>
+                    <input type="number"
+                           min="1"
+                           class="form-control"
+                           placeholder="Quantity *"
+                           {% if form.quantity.data %}
+                            value="{{ form.quantity.data }}"
+                           {% endif %}
+                           id="quantity"
+                           name="quantity"
+                           required
+                    >
+                </div>
+                {{ error_display(form.quantity.errors) }}
+                <div class="form-group">
+                    <label for="isbn" class="form-label">ISBN</label>
+                    <input type="number"
+                           class="form-control"
+                           placeholder="ISBN *"
+                           {% if form.isbn.data %}
+                            value="{{ form.isbn.data }}"
+                           {% endif %}
+                           id="isbn"
+                           name="isbn"
+                           required
+                    >
+                </div>
+                {{ error_display(form.isbn.errors) }}
+                <div class="form-group">
+                    <label for="year_published" class="form-label">Year Published</label>
+                    <input type="number"
+                           min="1000"
+                           max="2023"
+                           step="1"
+                           class="form-control"
+                           placeholder="Year Published *"
+                           {% if form.year_published.data %}
+                            value="{{ form.year_published.data }}"
+                           {% endif %}
+                           id="year_published"
+                           name="year_published"
+                           required
+                    >
+                </div>
+                {{ error_display(form.year_published.errors) }}
+                <br>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Add Book" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

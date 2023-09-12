@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% set page_title = "All-Borrow" %}
+{% block content %}
+
+    <div class="list-group">
+        {% for borrow in borrows %}
+            <h5>
+{#                <a href="/book/{{ books[i].book_id }}">Book ID: {{ books[i].book_id }} |</a>#}
+                <a href="/student/{{ borrow.student_id }}">Student ID: {{ borrow.student_id }} |</a>
+                Borrow Date: {{ borrow.borrow_date }} |
+                Return Date: {{ borrow.return_date }}
+            </h5>
+            <hr>
+        {% endfor %}
+    </div>
+
+
+ {% for i in range(1, total_pages+1) %}
+        <a href="?page={{i}}">{{i}} </a>
+    {% endfor %}
+{% endblock %}

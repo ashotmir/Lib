@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "macros.html" import error_display with context %}
+{% set page_title = "Login" %}
+{% block content %}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-md-6 login-form-1">
+            <h3>Login</h3>
+            <form method="POST">
+                 {{ form.csrf_token }}
+                <div class="form-group">
+                    <label for="username" class="form-label">Username: </label>
+                        <input type="text"
+                               class="form-control"
+                               placeholder="User Name *"
+                               {% if form.username.data %}
+                                value="{{ form.username.data }}"
+                               {% endif %}
+                               id="username"
+                               name="username"
+                               required
+                    >
+                </div>
+                {{ error_display(form.username.errors) }}
+                <div class="form-group">
+                    <label for="password" class="form-label">Password: </label>
+                    <input type="password"
+                           class="form-control"
+                           placeholder="Password *"
+                           {% if form.password.data %}
+                            value="{{ form.password.data }}"
+                           {% endif %}
+                           id="password"
+                           name="password"
+                           required
+                    >
+                </div>
+                {{ error_display(form.password.errors) }}
+                <div class="form-group">
+                    <input type="submit" class="btnSubmit" value="Login" />
+                </div>
+                <div class="form-group">
+                    <a href="#" class="ForgetPwd">Forget Password?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

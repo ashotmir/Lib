@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% set page_title = "Author" %}
+
+{% block content %}
+    <div class="list-group">
+        {% for author in authors %}
+            <a href="/author/{{ author.id }}"
+               class="list-group-item list-group-item-action">
+                {{ author.first_name }}
+                {{ author.second_name }}
+            </a>
+        {% endfor %}
+    </div>
+    <br>
+{#    {% if user.super == True %}#}
+{#        <a href="/author/new" class="btn btn-primary">➕ Add New Author</a>#}
+{#    {% endif %}#}
+    <br>
+    {% for i in range(1, total_pages+1) %}
+        <a href="?page={{i}}">{{i}} </a>
+    {% endfor %}
+{% endblock %}
